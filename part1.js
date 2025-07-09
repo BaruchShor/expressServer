@@ -1,10 +1,12 @@
 import express from "express";
+import usersRuoter from "./router.js";
 
 const PORT = 4547;
 
 const server = express();
 server.use(logger)
 server.use(express.json());
+server.use('/users', usersRuoter);
 
 function logger(req, res, next){
     console.log(`got req to: ${req.method}, url: ${req.url}`);
@@ -22,13 +24,14 @@ server.get('/greet', (req, res) => {
 
 server.get('/GET/test/:name',async (req, res) => {
     console.log(req.params.name);
+    let resoult  = {};
     const respons  = await fetch(`http://localhost:4547/GET/greet/${req.params.name}`).then(() => {return req.params.name});
     if(req.params.name === respons){
-        res.isOK = true;
+        resoult.isOK = true;
     }else{
-        res.isOK = false;
+        resoult.isOK = false;
     }
-    res.send(res.isOK)
+    res.send(resoult)
 });
 
 server.get('/GET/greet/:name', (req, res) => {
@@ -38,6 +41,16 @@ server.get('/GET/greet/:name', (req, res) => {
     }
     res.send(respons);
 });
+
+server.post('/POST/action', (req, res) => {
+    let obj = {};
+    if(!req.body || (req.body.actionType != "joke" && req.body.actionType != "cat face")){
+        obj.msg = "body is malformed";
+        res.send(obj)
+    }
+
+
+})
 
 //listener
 
