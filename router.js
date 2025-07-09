@@ -3,7 +3,7 @@ import fs from "node:fs/promises";
 
 const ruoter = express.Router();
 
-ruoter.get('/', (req, res) => res.send("Hello world!"));
+ruoter.get('/',async (req, res) => res.send(await fs.readFile("data.txt", "utf-8")));
 
 ruoter.post('/', async (req, res) => {
 try{
