@@ -1,0 +1,24 @@
+{
+  "name": "express",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node --watch part1.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/BaruchShor/expressServer.git"
+  },
+  "type": "module",
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/BaruchShor/expressServer/issues"
+  },
+  "homepage": "https://github.com/BaruchShor/expressServer#readme",
+  "dependencies": {
+    "express": "^5.1.0"
+  }
+}
